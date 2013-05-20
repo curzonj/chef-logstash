@@ -4,6 +4,7 @@
 #
 #
 include_recipe "logstash::default"
+include_recipe "java"
 
 if node['logstash']['agent']['patterns_dir'][0] == '/'
   patterns_dir = node['logstash']['agent']['patterns_dir']

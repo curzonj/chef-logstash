@@ -10,6 +10,7 @@
 #
 
 include_recipe "logstash::default"
+include_recipe "java"
 include_recipe "logrotate"
 
 include_recipe "rabbitmq" if node['logstash']['server']['install_rabbitmq']
