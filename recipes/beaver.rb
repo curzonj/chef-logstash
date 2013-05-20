@@ -7,7 +7,7 @@ include_recipe "logstash::default"
 include_recipe "python::default"
 include_recipe "logrotate"
 
-if node['logstash']['agent']['install_zeromq']
+if node['logstash']['install_zeromq']
   case
   when platform_family?("rhel")
     include_recipe "yumrepo::zeromq"
