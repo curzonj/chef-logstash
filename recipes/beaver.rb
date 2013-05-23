@@ -98,7 +98,7 @@ node['logstash']['beaver']['inputs'].each do |ins|
     case name
       when "file" then
         if hash.has_key?('path')
-          files << hash
+          files << hash.to_hash
         else
           log("input file has no path.") { level :warn }
         end
@@ -106,6 +106,11 @@ node['logstash']['beaver']['inputs'].each do |ins|
         log("input type not supported: #{name}") { level :warn }
     end
   end
+end
+
+# This ensures that our beaver.conf files are deterministic
+files.sort! do |a,b|
+  a['path'] <=> b['path']
 end
 
 # outputs

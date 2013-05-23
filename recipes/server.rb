@@ -134,6 +134,7 @@ if platform_family? "debian"
     template "/etc/init/logstash_server.conf" do
       mode "0644"
       source "logstash_server.conf.erb"
+      notifies :restart, "service[logstash_server]"
     end
 
     service "logstash_server" do
